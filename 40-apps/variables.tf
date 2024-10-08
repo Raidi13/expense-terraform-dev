@@ -13,8 +13,20 @@ variable "common_tags"{
     }
 }
 
-variable "bastion_tags" {
-    default = {
-      component = "bastion"  
-    }
+variable "mysql_tags" {
+  default = {
+    component = "mysql"
+  }
 }
+variable "backend_tags" {
+  default = {
+    component = "backend"
+  }
+}
+
+variable "frontend_tags" {
+  default = {
+    component = "frontend"
+  }
+}
+
