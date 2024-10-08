@@ -1,5 +1,5 @@
 module "mysql_sg" {
-  source = "git::https://github.com/Raidi13/terraform-aws-vpc.git?ref=main"
+  source = "../../terraform-aws-security-group"
   project_name = var.project_name
   enivronment =  var.enivronment
   sg_name = "mysql"
@@ -9,7 +9,7 @@ module "mysql_sg" {
 
 }
 module "backend_sg" {
-  source = "git::https://github.com/Raidi13/terraform-aws-vpc.git?ref=main"
+  source = "../../terraform-aws-security-group"
   project_name = var.project_name
   enivronment =  var.enivronment
   sg_name = "backend"
@@ -18,18 +18,18 @@ module "backend_sg" {
   sg_tags = var.backend_sg_tags
 
 }
-module "forntend_sg" {
-  source = "git::https://github.com/Raidi13/terraform-aws-vpc.git?ref=main"
+module "frontend_sg" {
+  source = "../../terraform-aws-security-group"
   project_name = var.project_name
   enivronment =  var.enivronment
-  sg_name = "forntend"
+  sg_name = "frontend"
   vpc_id = local.vpc_id
   common_tags = var.common_tags
-  sg_tags = var.forntend_sg_tags
+  sg_tags = var.frontend_sg_tags
 
 }  
 module "bastion_sg" {
-  source = "git::https://github.com/Raidi13/terraform-aws-vpc.git?ref=main"
+  source = "../../terraform-aws-security-group"
   project_name = var.project_name
   enivronment =  var.enivronment
   sg_name = "bastion"
@@ -62,7 +62,7 @@ resource "aws_security_group_rule" "frontend_public" {
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = module.forntend_sg.id
+  security_group_id = module.frontend_sg.id
 }
 
 resource "aws_security_group_rule" "mysql_bastion" {

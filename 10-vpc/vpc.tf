@@ -1,5 +1,7 @@
 module "vpc" {
+    ##source = ../../terraform-aws-security-group
     source = "git::https://github.com/Raidi13/terraform-aws-vpc.git?ref=main"
+    vpc_cidr = var.vpc_cidr
     project_name = var.project_name
     enivronment  = var.enivronment
     common_tags  = var.common_tags
