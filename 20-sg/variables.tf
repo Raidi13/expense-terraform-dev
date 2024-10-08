@@ -18,3 +18,20 @@ variable "mysql_sg_tags" {
         component = "mysql"
     }
 }
+variable "backend_sg_tags" {
+    default = {
+        component = "backend"
+    }
+}
+variable "frontend_sg_tags" {
+    default = {
+        component = "frontend"
+    }
+}
+variable "bastion_sg_tags" {
+    default = {
+        component = "bastion"
+    }
+}
+
+
