@@ -35,4 +35,8 @@ variable "ansible_tags" {
   }
 }
 
-
+variable "zone_name" {
+  default = "aws-dev-rk.online"
+    
+  
+}
