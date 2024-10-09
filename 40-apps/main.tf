@@ -66,7 +66,6 @@ module "frontend" {
   instance_type          = "t3.micro"
   vpc_security_group_ids = [local.frontend_sg_id]
   subnet_id              = local.public_subnet_id
-
   tags = merge (
     var.common_tags,
     var.frontend_tags,
@@ -82,10 +81,11 @@ module "ansible" {
 
   ami = data.aws_ami.joindevops.id
   name = "${local.resource_name}-ansible"
-
+  
   instance_type          = "t3.micro"
   vpc_security_group_ids = [local.ansible_sg_id]
   subnet_id              = local.public_subnet_id
+  user_data = file("expense.sh") # file function
 
   tags = merge (
     var.common_tags,
