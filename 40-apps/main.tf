@@ -126,6 +126,13 @@ module "records" {
         module.frontend.private_ip
       ]
     },
+    {
+    name    = ""
+      type    = "A"
+      ttl     = 1
+      records = [
+        module.frontend.public_ip
+      ]
+    }
   ]
-  depends_on = [module.zones]
 }
